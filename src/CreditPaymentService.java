@@ -1,15 +1,17 @@
 public class CreditPaymentService {
-    public double calculate (int a, int b){
+    public int calculate(int timeCredit, int sumCredit) {
 
-        double c = 0;
-        if (a == 1) {
-            c = 1.05494; a = 12;
-        } if (a == 2){
-            c = 1.10736; a = 24;
-        } if (a == 3) {
-            c = 1.16145; a = 36;
+        if (timeCredit == 1) {
+            timeCredit = 12;
         }
-        int percent = (int) ((b * c) / a);
+        if (timeCredit == 2) {
+            timeCredit = 24;
+        }
+        if (timeCredit == 3) {
+            timeCredit = 36;
+        }
+        double exponentiation = (1 + (9.99 / (12 * 100)));
+        int percent = (int) ((sumCredit * (9.99 / (12 * 100))) / (1 - (Math.pow(exponentiation, -timeCredit))));
 
         return percent;
     }
